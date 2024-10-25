@@ -1,14 +1,10 @@
 # coding: utf-8
 
-def test
-  Dir.glob "./test/test_*.rb" do |f|
-    require f
-  end
-end
+require "rake/testtask"
 
-desc 'test all'
-task :test do
-  test
+Rake::TestTask.new do |t|
+  t.libs << "test"
+  t.test_files = FileList['test/test_*.rb']
 end
 
 desc 'compare performance with treetop and haskell'
